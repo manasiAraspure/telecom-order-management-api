@@ -39,4 +39,7 @@ app.include_router(auth.router)
 @app.get("/")
 def root():
     logger.info("Root endpoint hit")
-    return {"message": "Telecom Order Management API is running"}
+    return {"message": "Telecom Order Management API is running",
+        "documentation": "/docs",
+        "note": "Visit /docs for interactive API documentation and to try out the endpoints"
+   }

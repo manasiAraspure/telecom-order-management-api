@@ -1,15 +1,22 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+import os
+from dotenv import load_dotenv
 
-SQLALCHEMY_DATABASE_URL = "sqlite:///./telecom.db"
+load_dotenv()
+SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./telecom.db")
+
+# SQLALCHEMY_DATABASE_URL = "sqlite:///./telecom.db"
 
 # For MySQL :
 # SQLALCHEMY_DATABASE_URL = "mysql+pymysql://user:password@localhost/telecom_db"
 
+connect_args = {"check_same_thread": False} if SQLALCHEMY_DATABASE_URL.startswith("sqlite") else {}
+
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL,
-    connect_args={"check_same_thread": False}  # needed only for SQLite
+    connect_args=connect_args
 )
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
