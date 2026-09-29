@@ -2,6 +2,8 @@
 
 A backend REST API for managing fiber broadband subscribers and service orders, built with FastAPI. Simulates core workflows from telecom BSS (Business Support Systems) — subscriber management, order lifecycle tracking, and service feasibility checks — inspired by real-world telecom provisioning systems.
 
+🔗 **Live Demo:** [telecom-order-api.onrender.com/docs](https://telecom-order-api.onrender.com/docs)
+
 ## Features
 
 - **Full CRUD** for Subscribers and Orders
